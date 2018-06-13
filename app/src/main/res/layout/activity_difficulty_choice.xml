@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kotytoger.memgame2.DifficultyChoiceActivity">
+
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_pic"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:text="@string/title_memory"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="151dp"
+            android:layout_height="wrap_content"
+            android:text="Welcome"
+            android:textSize="30dp"
+
+
+            />
+
+
+        <TextView
+            android:id="@+id/welcomedNameText"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/welcomedAgeText"
+            android:layout_width="103dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="50dp"
+            android:textAlignment="center"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="177dp"
+            android:layout_height="41dp"
+            android:text="Choose difficulty:"
+            android:textSize="20dp"/>
+
+        <Button
+            android:id="@+id/button_easy"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="@string/easy_mode_button" />
+
+        <Button
+            android:id="@+id/button_medium"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Medium" />
+
+        <Button
+            android:id="@+id/button_hard"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Hard" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
