@@ -1,6 +1,10 @@
 package com.example.kotytoger.memgame2;
 
 import android.animation.ValueAnimator;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -9,8 +13,11 @@ import android.transition.Explode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.Locale;
 import java.util.Random;
@@ -26,6 +33,10 @@ public class EasyGameActivity extends AppCompatActivity implements View.OnClickL
     private int counter = 0;
 
     private TextView textName;
+    private TextView textEasyScore;
+    private int score=0;
+
+
 
     private int numberOfElements;
 
@@ -41,13 +52,17 @@ public class EasyGameActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate  (savedInstanceState);
         setContentView(R.layout.activity_easy_game);
+
 
         timer_view = findViewById(R.id.easy_timer);
         startTimer();
 
         updateCountDownText();
+
+        textEasyScore = findViewById(R.id.easy_score);
+        textEasyScore.setText("Score: " + score);
 
         textName = findViewById(R.id.textViewName);
         textName.setText(getIntent().getStringExtra("outputNameEasy"));
@@ -102,7 +117,16 @@ public class EasyGameActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onFinish() {
                 isTimeRunning = false;
-                Toast.makeText(EasyGameActivity.this,"TIME'S UP! START AGAIN!",Toast.LENGTH_LONG).show();
+                //Toast.makeText(EasyGameActivity.this,"TIME'S UP! START AGAIN!",Toast.LENGTH_LONG).show();
+
+
+                Intent intent = new Intent(EasyGameActivity.this,MainActivity.class);
+                String calculatedScore = Integer.toString(score);
+                intent.putExtra("outputScore",calculatedScore);
+                startActivity(intent);
+
+
+
                 finish();
 
             }
@@ -179,9 +203,24 @@ public class EasyGameActivity extends AppCompatActivity implements View.OnClickL
 
             selectedButton1 = null;
 
+            score += 10;
+            textEasyScore.setText("Score: " + score);
+
             if(counter==6)
             {
                 Toast.makeText(this,"YOU WON!!",Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(EasyGameActivity.this,MainActivity.class);
+                String calculatedScore = Integer.toString(score+50); //bonus for winning
+                intent.putExtra("outputScore",calculatedScore);
+                startActivity(intent);
+
+                //
+
+
+
+                //
+
                 finish();
             }
 

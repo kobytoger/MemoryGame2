@@ -1,5 +1,6 @@
 package com.example.kotytoger.memgame2;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,8 @@ public class HardGameActivity extends AppCompatActivity implements View.OnClickL
     private int counter = 0;
 
     private TextView textName;
-
+    private TextView textHardScore;
+    private int score=0;
     private int numberOfElements;
 
     private MemoryButton[] buttons;
@@ -45,6 +47,9 @@ public class HardGameActivity extends AppCompatActivity implements View.OnClickL
         startTimer();
 
         updateCountDownText();
+
+        textHardScore = findViewById(R.id.hard_score);
+        textHardScore.setText("Score: " + score);
 
         textName = findViewById(R.id.textViewName);
         textName.setText(getIntent().getStringExtra("outputNameHard"));
@@ -103,6 +108,14 @@ public class HardGameActivity extends AppCompatActivity implements View.OnClickL
             public void onFinish() {
                 isTimeRunning = false;
                 Toast.makeText(HardGameActivity.this,"TIME'S UP! START AGAIN!",Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(HardGameActivity.this,MainActivity.class);
+                String calculatedScore = Integer.toString(score);
+                intent.putExtra("outputScore",calculatedScore);
+                startActivity(intent);
+
+
+
                 finish();
 
             }
@@ -179,9 +192,18 @@ public class HardGameActivity extends AppCompatActivity implements View.OnClickL
 
             selectedButton1 = null;
 
+            score += 20;
+            textHardScore.setText("Score: " + score);
+
             if(counter==10)
             {
                 Toast.makeText(this,"YOU WON!!",Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(HardGameActivity.this,MainActivity.class);
+                String calculatedScore = Integer.toString(score+70); //bonus for winning
+                intent.putExtra("outputScore",calculatedScore);
+                startActivity(intent);
+
                 finish();
             }
             return;

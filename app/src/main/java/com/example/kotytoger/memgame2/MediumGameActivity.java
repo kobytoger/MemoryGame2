@@ -1,5 +1,6 @@
 package com.example.kotytoger.memgame2;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,10 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+//
+
+//
 
 import java.util.Locale;
 import java.util.Random;
@@ -23,6 +28,8 @@ public class MediumGameActivity extends AppCompatActivity implements View.OnClic
     private int counter = 0;
 
     private TextView textName;
+    private TextView textMediumScore;
+    private int score=0;
 
     private int numberOfElements;
 
@@ -36,6 +43,11 @@ public class MediumGameActivity extends AppCompatActivity implements View.OnClic
 
     private boolean isBusy = false;
 
+    //
+
+
+    //
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +56,11 @@ public class MediumGameActivity extends AppCompatActivity implements View.OnClic
         timer_view = findViewById(R.id.medium_timer);
         startTimer();
 
+
         updateCountDownText();
+
+        textMediumScore = findViewById(R.id.medium_score);
+        textMediumScore.setText("Score: " + score);
 
         textName = findViewById(R.id.textViewName);
         textName.setText(getIntent().getStringExtra("outputNameMedium"));
@@ -102,6 +118,10 @@ public class MediumGameActivity extends AppCompatActivity implements View.OnClic
                 isTimeRunning = false;
                 Toast.makeText(MediumGameActivity.this,"TIME'S UP! START AGAIN!",Toast.LENGTH_LONG).show();
 
+                Intent intent = new Intent(MediumGameActivity.this,MainActivity.class);
+                String calculatedScore = Integer.toString(score);
+                intent.putExtra("outputScore",calculatedScore);
+                startActivity(intent);
 
                 finish();
 
@@ -144,6 +164,9 @@ public class MediumGameActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
+
+    //
+
     @Override
     public void onClick(View view) {
 
@@ -180,9 +203,17 @@ public class MediumGameActivity extends AppCompatActivity implements View.OnClic
 
             selectedButton1 = null;
 
+            score += 15;
+            textMediumScore.setText("Score: " + score);
+
             if(counter==8)
             {
                 Toast.makeText(this,"YOU WON!!",Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(MediumGameActivity.this,MainActivity.class);
+                String calculatedScore = Integer.toString(score+60); //bonus for winning
+                intent.putExtra("outputScore",calculatedScore);
+                startActivity(intent);
                 finish();
 
             }
