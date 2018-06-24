@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_pic">
+    tools:context="com.example.kotytoger.memgame2.BlankFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:text="Score board:"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="80dp"
+        android:id="@+id/text_score_title" />
+
+    <TextView
+        android:id="@+id/textViewData"
+        android:layout_width="280dp"
+        android:layout_height="430dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_score_title"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="62dp"
+        android:textSize="28dp"
+        android:text="" />
+
+</FrameLayout>
